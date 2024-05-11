@@ -4,7 +4,7 @@ module FakeApi
     def Handler.handle(method, path:, params: {}, headers: {}, session: {}, cookies: {})
       if route = Handler.resolve(method, path)
         result(
-          data: route.response.call,
+          data: route.response.call(params),
           status: route.status,
           headers: route.headers,
           cookies: route.cookies,
